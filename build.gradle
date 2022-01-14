@@ -34,11 +34,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+
     systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
-    systemProperty 'com.athaydes.spockframework.report.outputDir', 'docs'
+    systemProperty 'com.athaydes.spockframework.report.outputDir', 'docs/spock-reports'
     systemProperty 'com.athaydes.spockframework.report.projectName', 'Error Correcting Encoder-Decoder'
     systemProperty 'com.athaydes.spockframework.report.projectVersion', 1.0
 }
+
 run {
     standardInput = System.in
 }
