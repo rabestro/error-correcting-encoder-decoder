@@ -3,6 +3,10 @@ plugins {
     id 'application'
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
 group 'lv.id.jc'
 version '1.0-SNAPSHOT'
 
@@ -30,4 +34,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
+    systemProperty 'com.athaydes.spockframework.report.outputDir', 'docs'
+    systemProperty 'com.athaydes.spockframework.report.projectName', 'Error Correcting Encoder-Decoder'
+    systemProperty 'com.athaydes.spockframework.report.projectVersion', 1.0
 }
+run {
+    standardInput = System.in
+}
+
+// ./gradlew run -q --console=plain
