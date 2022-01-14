@@ -1,0 +1,48 @@
+plugins {
+    id 'groovy'
+    id 'application'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
+group 'lv.id.jc'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.12'
+
+    // Spock Framework
+
+    testImplementation platform('org.codehaus.groovy:groovy-bom:3.0.9')
+    testImplementation platform('org.spockframework:spock-bom:2.0-groovy-3.0')
+
+    testImplementation 'org.spockframework:spock-core'
+
+    testRuntimeClasspath("com.athaydes:spock-reports:2.1.1-groovy-3.0")
+    testImplementation 'org.slf4j:slf4j-api:1.7.32'
+    testRuntimeClasspath 'org.slf4j:slf4j-simple:1.7.32'
+}
+
+test {
+    useJUnitPlatform()
+
+    systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
+    systemProperty 'com.athaydes.spockframework.report.outputDir', 'docs/spock-reports'
+    systemProperty 'com.athaydes.spockframework.report.projectName', 'Error Correcting Encoder-Decoder'
+    systemProperty 'com.athaydes.spockframework.report.projectVersion', 1.0
+}
+
+run {
+    standardInput = System.in
+}
+
+// ./gradlew run -q --console=plain
