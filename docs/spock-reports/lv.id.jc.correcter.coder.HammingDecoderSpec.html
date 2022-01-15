@@ -244,14 +244,14 @@ div.footer {
 </style>
 </head>
 <body>
-<h2>Report for lv.id.jc.correcter.printer.BinPrinterSpec</h2>
+<h2>Report for lv.id.jc.correcter.coder.HammingDecoderSpec</h2>
 <hr></hr>
 <div class='back-link'>
 <a href='index.html'>&lt;&lt; Back</a>
 </div>
 <div class='summary-report'>
 <h3>Summary:</h3>
-<div class='date-test-ran'>Created on Sat Jan 15 20:36:48 EET 2022 by jegors</div>
+<div class='date-test-ran'>Created on Sat Jan 15 22:28:48 EET 2022 by jegors</div>
 <table class='summary-table'>
 <thead>
 <tr>
@@ -272,11 +272,12 @@ div.footer {
 <td>0</td>
 <td>0</td>
 <td>100.0%</td>
-    <td>0.009 seconds</td>
+<td>0.066 seconds</td>
 </tr>
 </tbody>
 </table>
 </div>
+<pre class='title'>Hamming error-correction decoder</pre>
 <h3>Features:</h3>
 <table class='features-table'>
 <colgroup>
@@ -286,13 +287,13 @@ div.footer {
 <tbody>
 <ul id='toc'>
 <li>
-<a href='#-1686264457' class='feature-toc-pass'>should print binary view of data</a>
+<a href='#-143777248' class='feature-toc-pass'>should decode data by Hamming algorithm</a>
 </li>
 </ul>
 <tr>
 <td colspan='10'>
-<div class='feature-description' id='-1686264457'>
-<span>should print binary view of data</span>
+<div class='feature-description' id='-143777248'>
+<span>should decode data by Hamming algorithm</span>
 <span style='float: right; font-size: 60%;'>
 <a href='#toc'>Return</a>
 </span>
@@ -304,23 +305,23 @@ div.footer {
 <div class='block-kind'>Given:</div>
 </td>
 <td>
-<pre class='block-source'>def printer = new BinPrinter()</pre>
+<pre class='block-source'>def data = received as byte[]</pre>
 </td>
 </tr>
 <tr>
 <td>
-<div class='block-kind'>Expect:</div>
+<div class='block-kind'>When:</div>
 </td>
 <td>
-<pre class='block-source'>printer.apply(data) == binView</pre>
+<pre class='block-source'>def decoded = coder.apply(data)</pre>
 </td>
 </tr>
 <tr>
 <td>
-<div class='block-kind'>And:</div>
+<div class='block-kind'>Then:</div>
 </td>
 <td>
-<pre class='block-source'>binView = 'bin view: 01010100 01100101 01110011 01110100'</pre>
+<pre class='block-source'>decoded == text as byte[]</pre>
 </td>
 </tr>
 <tr>
@@ -332,14 +333,44 @@ div.footer {
 <table class='ex-table'>
 <thead>
 <tr>
-<th class='ex-header'>data</th>
-<th class='ex-header'>binView</th>
+<th class='ex-header'>received</th>
+<th class='ex-header'>text</th>
 </tr>
 </thead>
 <tbody>
 <tr class='ex-pass'>
-<td class='ex-value'>[84, 101, 115, 116]</td>
-<td class='ex-value'>bin view: 01010100 01100101 01110011 01110100</td>
+<td class='ex-value'>[74, 152]</td>
+<td class='ex-value'>T</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>[10, 144]</td>
+<td class='ex-value'>T</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>[202, 24]</td>
+<td class='ex-value'>T</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>[10, 152]</td>
+<td class='ex-value'>T</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>[202, 152]</td>
+<td class='ex-value'>T</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>[74, 152, 204, 74, 30, 134, 30, 152]</td>
+<td class='ex-value'>Test</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
+<td class='ex-value'>[106, 24, 236, 10, 63, 143, 63, 136]</td>
+<td class='ex-value'>Test</td>
 <td class='ex-result'>OK</td>
 </tr>
 </tbody>
@@ -347,7 +378,7 @@ div.footer {
 </div>
 </td>
 <td>
-<div class='spec-status'>1/1 passed</div>
+<div class='spec-status'>7/7 passed</div>
 </td>
 </tr>
 </tbody>
