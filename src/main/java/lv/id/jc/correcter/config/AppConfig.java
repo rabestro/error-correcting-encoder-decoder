@@ -1,7 +1,8 @@
 package lv.id.jc.correcter.config;
 
 import lv.id.jc.correcter.Application;
-import lv.id.jc.correcter.Transformation;
+import lv.id.jc.correcter.DataInfo;
+import lv.id.jc.correcter.Transmitter;
 import lv.id.jc.correcter.coder.ErrorEmulator;
 import lv.id.jc.correcter.coder.HammingDecoder;
 import lv.id.jc.correcter.coder.HammingEncoder;
@@ -38,35 +39,24 @@ public class AppConfig {
     }
 
     public Runnable getEncodeAction() {
-        var action = new Transformation();
-        action.setCoder(new HammingEncoder());
-        action.setInFile(SOURCE_FILE);
-        action.setOutFile(ENCODED_FILE);
-        action.setInPrinters(List.of(getTextPrinter(), getHexPrinter(), getBinPrinter()));
-        action.setOutPrinters(List.of(getHexPrinter(), getBinPrinter()));
-        return action;
+        var source = new DataInfo(SOURCE_FILE, List.of(getTextPrinter(), getHexPrinter(), getBinPrinter()));
+        var target = new DataInfo(ENCODED_FILE, List.of(getHexPrinter(), getBinPrinter()));
+        return new Transmitter(new HammingEncoder(), source, target);
     }
 
     public Runnable getSendAction() {
-        var action = new Transformation();
-        action.setCoder(new ErrorEmulator());
-        action.setInFile(ENCODED_FILE);
-        action.setOutFile(RECEIVED_FILE);
-        action.setInPrinters(List.of(getHexPrinter(), getBinPrinter()));
-        action.setOutPrinters(List.of(getBinPrinter(), getHexPrinter()));
-        return action;
+        var source = new DataInfo(ENCODED_FILE, List.of(getHexPrinter(), getBinPrinter()));
+        var target = new DataInfo(RECEIVED_FILE, List.of(getBinPrinter(), getHexPrinter()));
+        return new Transmitter(new ErrorEmulator(), source, target);
     }
 
     public Runnable getDecodeAction() {
-        var action = new Transformation();
-        action.setCoder(new HammingDecoder());
-        action.setInFile(RECEIVED_FILE);
-        action.setOutFile(DECODED_FILE);
-        action.setInPrinters(List.of(getHexPrinter(), getBinPrinter()));
-        action.setOutPrinters(List.of(getBinPrinter(), getHexPrinter(), getTextPrinter()));
-        return action;
+        var source = new DataInfo(RECEIVED_FILE, List.of(getHexPrinter(), getBinPrinter()));
+        var target = new DataInfo(DECODED_FILE, List.of(getBinPrinter(), getHexPrinter(), getTextPrinter()));
+        return new Transmitter(new HammingDecoder(), source, target);
     }
 
+    @Bean("commands")
     public Map<String, Runnable> getCommands() {
         return Map.of(
                 "encode", getEncodeAction(),

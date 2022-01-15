@@ -1,0 +1,42 @@
+package lv.id.jc.correcter;
+
+import lv.id.jc.correcter.coder.Coder;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static java.lang.System.Logger.Level.WARNING;
+import static java.lang.System.out;
+
+public record Transmitter(Coder coder, DataInfo source, DataInfo target) implements Runnable {
+    private static final System.Logger LOGGER = System.getLogger("Transmitter");
+
+    @Override
+    public void run() {
+        try {
+            var data = readData();
+            printInfo(source, data);
+
+            var coded = coder.apply(data);
+
+            printInfo(target, coded);
+            writeData(coded);
+        } catch (IOException e) {
+            LOGGER.log(WARNING, e);
+        }
+    }
+
+    private void printInfo(DataInfo dataInfo, byte[] data) {
+        out.println(dataInfo.file());
+        dataInfo.printers().forEach(printer -> out.println(printer.apply(data)));
+    }
+
+    public byte[] readData() throws IOException {
+        return Files.readAllBytes(Paths.get(source.file()));
+    }
+
+    private void writeData(byte[] data) throws IOException {
+        Files.write(Paths.get(target.file()), data);
+    }
+}
