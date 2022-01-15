@@ -15,18 +15,28 @@ public record Transmitter(Coder coder, DataInfo source, DataInfo target) impleme
     @Override
     public void run() {
         try {
-            var data = Files.readAllBytes(Paths.get(source.file()));
-            out.println(source.file());
-            source.printers().forEach(printer -> out.println(printer.apply(data)));
+            var data = readData();
+            printInfo(source, data);
 
             var coded = coder.apply(data);
 
-            out.println();
-            out.println(target.file());
-            target.printers().forEach(printer -> out.println(printer.apply(coded)));
-            Files.write(Paths.get(target.file()), coded);
+            printInfo(target, coded);
+            writeData(coded);
         } catch (IOException e) {
             LOGGER.log(WARNING, e);
         }
+    }
+
+    private void printInfo(DataInfo dataInfo, byte[] data) {
+        out.println(dataInfo.file());
+        dataInfo.printers().forEach(printer -> out.println(printer.apply(data)));
+    }
+
+    public byte[] readData() throws IOException {
+        return Files.readAllBytes(Paths.get(source.file()));
+    }
+
+    private void writeData(byte[] data) throws IOException {
+        Files.write(Paths.get(target.file()), data);
     }
 }
