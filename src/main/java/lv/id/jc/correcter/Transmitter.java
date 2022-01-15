@@ -9,10 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static java.lang.System.Logger.Level.WARNING;
 import static java.lang.System.out;
 
 @Setter
 public class Transmitter implements Runnable {
+    private static final System.Logger LOGGER = System.getLogger("Transmitter");
+
     private String inFile;
     private String outFile;
     private Coder coder;
@@ -33,7 +36,7 @@ public class Transmitter implements Runnable {
             outPrinters.forEach(printer -> out.println(printer.apply(coded)));
             Files.write(Paths.get(outFile), coded);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(WARNING, e);
         }
     }
 }
