@@ -12,7 +12,7 @@ import java.util.List;
 import static java.lang.System.out;
 
 @Setter
-public class Transformation implements Runnable {
+public class Transmitter implements Runnable {
     private String inFile;
     private String outFile;
     private Coder coder;

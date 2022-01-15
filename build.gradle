@@ -1,6 +1,7 @@
 plugins {
     id 'groovy'
     id 'application'
+    id 'jacoco'
     id "org.sonarqube" version "3.3"
 }
 
@@ -11,13 +12,6 @@ java {
 group 'lv.id.jc'
 version '1.0-SNAPSHOT'
 
-sonarqube {
-    properties {
-        property "sonar.projectKey", "rabestro_error-correcting-encoder-decoder"
-        property "sonar.organization", "rabestro"
-        property "sonar.host.url", "https://sonarcloud.io"
-    }
-}
 
 repositories {
     mavenCentral()
@@ -43,6 +37,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
 
     systemProperty 'com.athaydes.spockframework.report.showCodeBlocks', true
     systemProperty 'com.athaydes.spockframework.report.outputDir', 'docs/spock-reports'
@@ -55,3 +50,25 @@ run {
 }
 
 // ./gradlew run -q --console=plain
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+    dependsOn test
+
+    reports {
+        xml.required = true
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "rabestro_error-correcting-encoder-decoder"
+        property "sonar.organization", "rabestro"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}

@@ -1,7 +1,7 @@
 package lv.id.jc.correcter.config;
 
 import lv.id.jc.correcter.Application;
-import lv.id.jc.correcter.Transformation;
+import lv.id.jc.correcter.Transmitter;
 import lv.id.jc.correcter.coder.ErrorEmulator;
 import lv.id.jc.correcter.coder.HammingDecoder;
 import lv.id.jc.correcter.coder.HammingEncoder;
@@ -38,7 +38,7 @@ public class AppConfig {
     }
 
     public Runnable getEncodeAction() {
-        var action = new Transformation();
+        var action = new Transmitter();
         action.setCoder(new HammingEncoder());
         action.setInFile(SOURCE_FILE);
         action.setOutFile(ENCODED_FILE);
@@ -48,7 +48,7 @@ public class AppConfig {
     }
 
     public Runnable getSendAction() {
-        var action = new Transformation();
+        var action = new Transmitter();
         action.setCoder(new ErrorEmulator());
         action.setInFile(ENCODED_FILE);
         action.setOutFile(RECEIVED_FILE);
@@ -58,7 +58,7 @@ public class AppConfig {
     }
 
     public Runnable getDecodeAction() {
-        var action = new Transformation();
+        var action = new Transmitter();
         action.setCoder(new HammingDecoder());
         action.setInFile(RECEIVED_FILE);
         action.setOutFile(DECODED_FILE);
