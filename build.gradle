@@ -18,9 +18,6 @@ repositories {
 }
 
 dependencies {
-//    compileOnly 'org.projectlombok:lombok:1.18.22'
-//    annotationProcessor 'org.projectlombok:lombok:1.18.22'
-
     implementation group: 'org.springframework', name: 'spring-context', version: '5.3.12'
 
     // Spock Framework
@@ -29,6 +26,9 @@ dependencies {
     testImplementation platform('org.spockframework:spock-bom:2.0-groovy-3.0')
 
     testImplementation 'org.spockframework:spock-core'
+    testImplementation 'io.github.joke:spock-mockable:1.4.4'
+
+    // Spock Reports
 
     testRuntimeClasspath("com.athaydes:spock-reports:2.1.1-groovy-3.0")
     testImplementation 'org.slf4j:slf4j-api:1.7.32'
@@ -67,7 +67,6 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: [
-                    "**/AppConfig.java",
                     "**/config/*"
             ])
         }))

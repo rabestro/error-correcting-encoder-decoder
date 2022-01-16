@@ -19,7 +19,7 @@ class HammingEncoderSpec extends Specification {
         where:
         text   | output
         'T'    | [0b01001010, 0b10011000]
-        'Test' | [0b01001010, 0b10011000, 0b11001100, 0b01001010, 0b00011110, 0b10000110, 0b00011110, 0b10011000]
+        'Test' | [0x4A, 0x98, 0xCC, 0x4A, 0x1E, 0x86, 0x1E, 0x98]
 
         and:
         expected = output as byte[]
