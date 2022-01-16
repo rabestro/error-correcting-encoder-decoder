@@ -27,16 +27,16 @@ public record Transmitter(Coder coder, DataInfo source, DataInfo target) impleme
         }
     }
 
-    private void printInfo(DataInfo dataInfo, byte[] data) {
+    void printInfo(DataInfo dataInfo, byte[] data) {
         out.println(dataInfo.file());
         dataInfo.printers().forEach(printer -> out.println(printer.apply(data)));
     }
 
-    public byte[] readData() throws IOException {
+    byte[] readData() throws IOException {
         return Files.readAllBytes(Paths.get(source.file()));
     }
 
-    private void writeData(byte[] data) throws IOException {
+    void writeData(byte[] data) throws IOException {
         Files.write(Paths.get(target.file()), data);
     }
 }
