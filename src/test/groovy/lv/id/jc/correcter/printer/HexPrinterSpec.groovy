@@ -1,7 +1,9 @@
 package lv.id.jc.correcter.printer
 
+import spock.lang.Issue
 import spock.lang.Specification
 
+@Issue("7")
 class HexPrinterSpec extends Specification {
     def "should print hex view of data"() {
         given:

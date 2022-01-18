@@ -1,7 +1,7 @@
 package lv.id.jc.correcter.config;
 
 import lv.id.jc.correcter.Application;
-import lv.id.jc.correcter.DataInfo;
+import lv.id.jc.correcter.DataConfig;
 import lv.id.jc.correcter.Transmitter;
 import lv.id.jc.correcter.coder.ErrorEmulator;
 import lv.id.jc.correcter.coder.HammingDecoder;
@@ -47,20 +47,20 @@ public class AppConfig {
     }
 
     public Runnable getEncodeAction() {
-        var source = new DataInfo(sourceFile, List.of(getTextPrinter(), getHexPrinter(), getBinPrinter()));
-        var target = new DataInfo(encodedFile, List.of(getHexPrinter(), getBinPrinter()));
+        var source = new DataConfig(sourceFile, List.of(getTextPrinter(), getHexPrinter(), getBinPrinter()));
+        var target = new DataConfig(encodedFile, List.of(getHexPrinter(), getBinPrinter()));
         return new Transmitter(new HammingEncoder(), source, target);
     }
 
     public Runnable getSendAction() {
-        var source = new DataInfo(encodedFile, List.of(getHexPrinter(), getBinPrinter()));
-        var target = new DataInfo(receivedFile, List.of(getBinPrinter(), getHexPrinter()));
+        var source = new DataConfig(encodedFile, List.of(getHexPrinter(), getBinPrinter()));
+        var target = new DataConfig(receivedFile, List.of(getBinPrinter(), getHexPrinter()));
         return new Transmitter(new ErrorEmulator(), source, target);
     }
 
     public Runnable getDecodeAction() {
-        var source = new DataInfo(receivedFile, List.of(getHexPrinter(), getBinPrinter()));
-        var target = new DataInfo(decodedFile, List.of(getBinPrinter(), getHexPrinter(), getTextPrinter()));
+        var source = new DataConfig(receivedFile, List.of(getHexPrinter(), getBinPrinter()));
+        var target = new DataConfig(decodedFile, List.of(getBinPrinter(), getHexPrinter(), getTextPrinter()));
         return new Transmitter(new HammingDecoder(), source, target);
     }
 

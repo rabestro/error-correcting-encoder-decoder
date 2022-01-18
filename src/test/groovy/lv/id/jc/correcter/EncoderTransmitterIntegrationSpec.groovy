@@ -12,9 +12,9 @@ class EncoderTransmitterIntegrationSpec extends Specification {
     static TEMP_DIR = "src/test/resources"
 
     @Shared
-    def source = new DataInfo("${TEMP_DIR}/source.bin", [])
+    def source = new DataConfig("${TEMP_DIR}/source.bin", [])
     @Shared
-    def target = new DataInfo("${TEMP_DIR}/target.bin", [])
+    def target = new DataConfig("${TEMP_DIR}/target.bin", [])
 
     @Subject
     def coder = new HammingEncoder()

@@ -1,15 +1,12 @@
 package lv.id.jc.correcter.printer;
 
-import java.util.StringJoiner;
+import java.util.HexFormat;
 
 public class HexPrinter implements Printer {
 
     @Override
     public String apply(byte[] data) {
-        var view = new StringJoiner(" ");
-        for (var element : data) {
-            view.add(String.format("%X", element));
-        }
-        return "hex view: " + view;
+        var formatter = HexFormat.ofDelimiter(" ").withUpperCase();
+        return "hex view: " + formatter.formatHex(data);
     }
 }
