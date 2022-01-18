@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="../jacoco-resources/report.css" rel="stylesheet" type="text/css"/>
+    <link href="../jacoco-resources/report.gif" rel="shortcut icon" type="image/gif"/>
+    <title>ErrorEmulator.java</title>
+    <link href="../jacoco-resources/prettify.css" rel="stylesheet" type="text/css"/>
+    <script src="../jacoco-resources/prettify.js" type="text/javascript"></script>
+</head>
+<body onload="window['PR_TAB_WIDTH']=4;prettyPrint()">
+<div class="breadcrumb" id="breadcrumb"><span class="info"><a class="el_session"
+                                                              href="../jacoco-sessions.html">Sessions</a></span><a
+        class="el_report" href="../index.html">Error Correcting Encoder-Decoder</a> &gt; <a class="el_package"
+                                                                                            href="index.source.html">lv.id.jc.correcter.coder</a>
+    &gt; <span class="el_source">ErrorEmulator.java</span></div>
+<h1>ErrorEmulator.java</h1>
+<pre class="source lang-java linenums">package lv.id.jc.correcter.coder;
+
+import java.util.Arrays;
+import java.util.Random;
+
+/**
+ * Bit-level error emulator
+ * &lt;p&gt;
+ * This coder makes an error in one bit per byte.
+ */
+<span class="fc" id="L11">public class ErrorEmulator implements Coder {</span>
+<span class="fc" id="L12">    private final Random random = new Random();</span>
+
+    @Override
+    public byte[] apply(byte[] bytes) {
+<span class="fc" id="L16">        var out = Arrays.copyOf(bytes, bytes.length);</span>
+
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (int i = out.length; i-- &gt; 0; ) {</span>
+<span class="fc" id="L19">            out[i] ^= (byte) (1 &lt;&lt; random.nextInt(8));</span>
+        }
+
+<span class="fc" id="L22">        return out;</span>
+    }
+}
+</pre>
+<div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span>
+</div>
+</body>
+</html>
