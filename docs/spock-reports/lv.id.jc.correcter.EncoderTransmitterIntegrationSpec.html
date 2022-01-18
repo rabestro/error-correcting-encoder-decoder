@@ -251,7 +251,7 @@ div.footer {
 </div>
 <div class='summary-report'>
 <h3>Summary:</h3>
-<div class='date-test-ran'>Created on Tue Jan 18 22:11:30 EET 2022 by jegors</div>
+<div class='date-test-ran'>Created on Tue Jan 18 22:50:29 EET 2022 by jegors</div>
 <table class='summary-table'>
 <thead>
 <tr>
@@ -272,13 +272,13 @@ div.footer {
 <td>0</td>
 <td>0</td>
 <td>100.0%</td>
-<td>0.110 seconds</td>
+<td>0.039 seconds</td>
 </tr>
 </tbody>
 </table>
 </div>
 <pre class='title'>Encode mode of transmission</pre>
-<pre class='narrative'>Integration test for Encode mode</pre>
+<pre class='narrative'>Integration test for Encode mode of the application</pre>
 <h3>Features:</h3>
 <table class='features-table'>
 <colgroup>
@@ -368,7 +368,7 @@ def transmitter = new Transmitter(coder, source, target)</pre>
 <div class='block-kind'>Then:</div>
 </td>
 <td>
-<div class='block-text'>transmitter creates an encoded binary file</div>
+<div class='block-text'>transmitter creates an hex binary file</div>
 </td>
 </tr>
 <tr>
@@ -382,7 +382,7 @@ def transmitter = new Transmitter(coder, source, target)</pre>
 <div class='block-kind'>And:</div>
 </td>
 <td>
-<div class='block-text'>the encoded binary file is two times bigger then the source file</div>
+<div class='block-text'>the hex binary file is two times bigger then the source file</div>
 </td>
 </tr>
 <tr>
@@ -402,7 +402,29 @@ def transmitter = new Transmitter(coder, source, target)</pre>
 <tr>
 <td></td>
 <td>
-<pre class='block-source'>Files.readAllBytes(targetPath) == encoded as byte[]</pre>
+<pre class='block-source'>Files.readAllBytes(targetPath) == encoded</pre>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Where:</div>
+</td>
+<td>
+<div class='block-text'>source message and encoded message in hex view</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>And:</div>
+</td>
+<td>
+<div class='block-text'>expected encoded content of the target file</div>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<pre class='block-source'>encoded = hexParser.parseHex(hex)</pre>
 </td>
 </tr>
 <tr>
@@ -415,23 +437,27 @@ def transmitter = new Transmitter(coder, source, target)</pre>
 <thead>
 <tr>
 <th class='ex-header'>message</th>
+<th class='ex-header'>hex</th>
 <th class='ex-header'>encoded</th>
 </tr>
 </thead>
 <tbody>
 <tr class='ex-pass'>
 <td class='ex-value'></td>
+<td class='ex-value'></td>
 <td class='ex-value'>[]</td>
 <td class='ex-result'>OK</td>
 </tr>
 <tr class='ex-pass'>
 <td class='ex-value'>T</td>
-<td class='ex-value'>[74, 152]</td>
+<td class='ex-value'>4A98</td>
+<td class='ex-value'>[74, -104]</td>
 <td class='ex-result'>OK</td>
 </tr>
 <tr class='ex-pass'>
 <td class='ex-value'>Test</td>
-<td class='ex-value'>[74, 152, 204, 74, 30, 134, 30, 152]</td>
+<td class='ex-value'>4A98CC4A1E861E98</td>
+<td class='ex-value'>[74, -104, -52, 74, 30, -122, 30, -104]</td>
 <td class='ex-result'>OK</td>
 </tr>
 </tbody>
