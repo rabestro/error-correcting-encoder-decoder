@@ -8,8 +8,8 @@ import spock.lang.*
 import java.nio.file.Files
 import java.nio.file.Path
 
-@Title("Encode mode of transmission")
-@Narrative("Integration test for Encode mode of the application")
+@Title("Integration test for encoding the message")
+@See("https://hyperskill.org/projects/58/stages/316/implement")
 class EncoderTransmitterIntegrationSpec extends Specification {
     @TempDir
     Path temp
@@ -29,6 +29,7 @@ class EncoderTransmitterIntegrationSpec extends Specification {
         def source = new DataConfig(sourcePath, [])
         def target = new DataConfig(targetPath, [])
 
+        and: 'coder and transmitter are under the test'
         @Subject
         def coder = new HammingEncoder()
 
@@ -38,10 +39,10 @@ class EncoderTransmitterIntegrationSpec extends Specification {
         when: 'we run the transmitter to encode the message'
         transmitter.run()
 
-        then: 'transmitter creates an hex binary file'
+        then: 'transmitter creates a binary file'
         Files.exists(targetPath)
 
-        and: 'the hex binary file is two times bigger then the source file'
+        and: 'the binary file is two times bigger then the source file'
         Files.size(targetPath) == 2 * Files.size(sourcePath)
 
         and: 'the target file has properly encoded message'
