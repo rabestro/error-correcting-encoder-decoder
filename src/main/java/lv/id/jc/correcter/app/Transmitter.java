@@ -4,7 +4,6 @@ import lv.id.jc.correcter.coder.Coder;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static java.lang.System.Logger.Level.WARNING;
 import static java.lang.System.out;
