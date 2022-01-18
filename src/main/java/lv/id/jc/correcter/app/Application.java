@@ -1,4 +1,4 @@
-package lv.id.jc.correcter;
+package lv.id.jc.correcter.app;
 
 import java.util.Map;
 import java.util.Scanner;

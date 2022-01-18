@@ -1,5 +1,6 @@
 package lv.id.jc.correcter;
 
+import lv.id.jc.correcter.app.Application;
 import lv.id.jc.correcter.config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
