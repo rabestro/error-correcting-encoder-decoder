@@ -251,7 +251,7 @@ div.footer {
 </div>
 <div class='summary-report'>
 <h3>Summary:</h3>
-<div class='date-test-ran'>Created on Tue Jan 18 21:07:34 EET 2022 by jegors</div>
+<div class='date-test-ran'>Created on Tue Jan 18 22:11:30 EET 2022 by jegors</div>
 <table class='summary-table'>
 <thead>
 <tr>
@@ -272,7 +272,7 @@ div.footer {
 <td>0</td>
 <td>0</td>
 <td>100.0%</td>
-<td>0.117 seconds</td>
+<td>0.110 seconds</td>
 </tr>
 </tbody>
 </table>
@@ -288,13 +288,13 @@ div.footer {
 <tbody>
 <ul id='toc'>
 <li>
-<a href='#103267291' class='feature-toc-pass'>should encode the message</a>
+<a href='#-1935300590' class='feature-toc-pass'>should encode message "#message"</a>
 </li>
 </ul>
 <tr>
 <td colspan='10'>
-<div class='feature-description' id='103267291'>
-<span>should encode the message</span>
+<div class='feature-description' id='-1935300590'>
+<span>should encode message "#message"</span>
 <span style='float: right; font-size: 60%;'>
 <a href='#toc'>Return</a>
 </span>
@@ -306,14 +306,47 @@ div.footer {
 <div class='block-kind'>Given:</div>
 </td>
 <td>
+<div class='block-text'>input and output file names</div>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<pre class='block-source'>def sourcePath = temp.resolve("source.bin")
+def targetPath = temp.resolve("target.bin")</pre>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>And:</div>
+</td>
+<td>
 <div class='block-text'>a message written to the source file</div>
 </td>
 </tr>
 <tr>
 <td></td>
 <td>
-<pre class='block-source'>println(sourcePath)
-Files.writeString(sourceFile, message)</pre>
+<pre class='block-source'>Files.writeString(sourcePath, message)</pre>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>And:</div>
+</td>
+<td>
+<div class='block-text'>configurations for input and output data files</div>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<pre class='block-source'>def source = new DataConfig(sourcePath, [])
+def target = new DataConfig(targetPath, [])
+@Subject
+def coder = new HammingEncoder()
+@Subject
+def transmitter = new Transmitter(coder, source, target)</pre>
 </td>
 </tr>
 <tr>
@@ -341,7 +374,7 @@ Files.writeString(sourceFile, message)</pre>
 <tr>
 <td></td>
 <td>
-<pre class='block-source'>Files.exists(targetFile)</pre>
+<pre class='block-source'>Files.exists(targetPath)</pre>
 </td>
 </tr>
 <tr>
@@ -355,7 +388,7 @@ Files.writeString(sourceFile, message)</pre>
 <tr>
 <td></td>
 <td>
-<pre class='block-source'>Files.size(targetFile) == 2 * Files.size(sourceFile)</pre>
+<pre class='block-source'>Files.size(targetPath) == 2 * Files.size(sourcePath)</pre>
 </td>
 </tr>
 <tr>
@@ -369,31 +402,7 @@ Files.writeString(sourceFile, message)</pre>
 <tr>
 <td></td>
 <td>
-<pre class='block-source'>Files.readAllBytes(targetFile) == encoded as byte[]</pre>
-</td>
-</tr>
-<tr>
-<td>
-<div class='block-kind'>Cleanup:</div>
-</td>
-<td>
-<div class='block-text'>we delete the source and the target files</div>
-</td>
-</tr>
-<tr>
-<td></td>
-<td>
-<pre class='block-source'>Files.delete(sourceFile)
-Files.delete(targetFile)</pre>
-</td>
-</tr>
-<tr>
-<td>
-<div class='block-kind'>And:</div>
-</td>
-<td>
-<pre class='block-source'>sourceFile = Paths.get(source.file())
-targetFile = Paths.get(target.file())</pre>
+<pre class='block-source'>Files.readAllBytes(targetPath) == encoded as byte[]</pre>
 </td>
 </tr>
 <tr>
@@ -407,23 +416,22 @@ targetFile = Paths.get(target.file())</pre>
 <tr>
 <th class='ex-header'>message</th>
 <th class='ex-header'>encoded</th>
-<th class='ex-header'>sourceFile</th>
-<th class='ex-header'>targetFile</th>
 </tr>
 </thead>
 <tbody>
 <tr class='ex-pass'>
+<td class='ex-value'></td>
+<td class='ex-value'>[]</td>
+<td class='ex-result'>OK</td>
+</tr>
+<tr class='ex-pass'>
 <td class='ex-value'>T</td>
 <td class='ex-value'>[74, 152]</td>
-<td class='ex-value'>src/test/resources/source.bin</td>
-<td class='ex-value'>src/test/resources/target.bin</td>
 <td class='ex-result'>OK</td>
 </tr>
 <tr class='ex-pass'>
 <td class='ex-value'>Test</td>
 <td class='ex-value'>[74, 152, 204, 74, 30, 134, 30, 152]</td>
-<td class='ex-value'>src/test/resources/source.bin</td>
-<td class='ex-value'>src/test/resources/target.bin</td>
 <td class='ex-result'>OK</td>
 </tr>
 </tbody>
@@ -431,7 +439,7 @@ targetFile = Paths.get(target.file())</pre>
 </div>
 </td>
 <td>
-<div class='spec-status'>2/2 passed</div>
+<div class='spec-status'>3/3 passed</div>
 </td>
 </tr>
 </tbody>

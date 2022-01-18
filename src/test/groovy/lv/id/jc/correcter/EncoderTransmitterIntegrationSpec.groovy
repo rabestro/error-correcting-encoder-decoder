@@ -7,60 +7,54 @@ import spock.lang.*
 
 import java.nio.file.Files
 import java.nio.file.Path
-import java.nio.file.Paths
 
 @Title("Encode mode of transmission")
-@Narrative("Integration test for Encode mode")
+@Narrative("Integration test for Encode mode of the application")
 class EncoderTransmitterIntegrationSpec extends Specification {
-    static TEMP_DIR = "src/test/resources"
-
-    @Shared
     @TempDir
     Path temp
 
     @Shared
-    def sourcePath = temp.toString() + "/source.bin"
+    def hexParser = HexFormat.of()
 
-    @Shared
-    def source = new DataConfig("${TEMP_DIR}/source.bin", [])
-    @Shared
-    def target = new DataConfig("${TEMP_DIR}/target.bin", [])
+    def 'should encode message "#message"'() {
+        given: 'input and output file names'
+        def sourcePath = temp.resolve("source.bin")
+        def targetPath = temp.resolve("target.bin")
 
-    @Subject
-    def coder = new HammingEncoder()
+        and: 'a message written to the source file'
+        Files.writeString(sourcePath, message)
 
-    @Subject
-    def transmitter = new Transmitter(coder, source, target)
+        and: 'configurations for input and output data files'
+        def source = new DataConfig(sourcePath, [])
+        def target = new DataConfig(targetPath, [])
 
-    def 'should encode the message'() {
-        given: 'a message written to the source file'
-        println(sourcePath)
-        Files.writeString(sourceFile, message)
+        @Subject
+        def coder = new HammingEncoder()
+
+        @Subject
+        def transmitter = new Transmitter(coder, source, target)
 
         when: 'we run the transmitter to encode the message'
         transmitter.run()
 
-        then: 'transmitter creates an encoded binary file'
-        Files.exists(targetFile)
+        then: 'transmitter creates an hex binary file'
+        Files.exists(targetPath)
 
-        and: 'the encoded binary file is two times bigger then the source file'
-        Files.size(targetFile) == 2 * Files.size(sourceFile)
+        and: 'the hex binary file is two times bigger then the source file'
+        Files.size(targetPath) == 2 * Files.size(sourcePath)
 
         and: 'the target file has properly encoded message'
-        Files.readAllBytes(targetFile) == encoded as byte[]
+        Files.readAllBytes(targetPath) == encoded
 
-        cleanup: 'we delete the source and the target files'
-        Files.delete(sourceFile)
-        Files.delete(targetFile)
+        where: 'source message and encoded message in hex view'
+        message | hex
+        ''      | ''
+        'T'     | '4A98'
+        'Test'  | '4A98CC4A1E861E98'
 
-        where:
-        message | encoded
-        'T'     | [0b01001010, 0b10011000]
-        'Test'  | [0x4A, 0x98, 0xCC, 0x4A, 0x1E, 0x86, 0x1E, 0x98]
-
-        and:
-        sourceFile = Paths.get(source.file())
-        targetFile = Paths.get(target.file())
+        and: 'expected encoded content of the target file'
+        encoded = hexParser.parseHex(hex)
     }
 
 }

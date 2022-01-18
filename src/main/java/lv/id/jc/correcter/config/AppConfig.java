@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
@@ -47,20 +48,20 @@ public class AppConfig {
     }
 
     public Runnable getEncodeAction() {
-        var source = new DataConfig(sourceFile, List.of(getTextPrinter(), getHexPrinter(), getBinPrinter()));
-        var target = new DataConfig(encodedFile, List.of(getHexPrinter(), getBinPrinter()));
+        var source = new DataConfig(Path.of(sourceFile), List.of(getTextPrinter(), getHexPrinter(), getBinPrinter()));
+        var target = new DataConfig(Path.of(encodedFile), List.of(getHexPrinter(), getBinPrinter()));
         return new Transmitter(new HammingEncoder(), source, target);
     }
 
     public Runnable getSendAction() {
-        var source = new DataConfig(encodedFile, List.of(getHexPrinter(), getBinPrinter()));
-        var target = new DataConfig(receivedFile, List.of(getBinPrinter(), getHexPrinter()));
+        var source = new DataConfig(Path.of(encodedFile), List.of(getHexPrinter(), getBinPrinter()));
+        var target = new DataConfig(Path.of(receivedFile), List.of(getBinPrinter(), getHexPrinter()));
         return new Transmitter(new ErrorEmulator(), source, target);
     }
 
     public Runnable getDecodeAction() {
-        var source = new DataConfig(receivedFile, List.of(getHexPrinter(), getBinPrinter()));
-        var target = new DataConfig(decodedFile, List.of(getBinPrinter(), getHexPrinter(), getTextPrinter()));
+        var source = new DataConfig(Path.of(receivedFile), List.of(getHexPrinter(), getBinPrinter()));
+        var target = new DataConfig(Path.of(decodedFile), List.of(getBinPrinter(), getHexPrinter(), getTextPrinter()));
         return new Transmitter(new HammingDecoder(), source, target);
     }
 

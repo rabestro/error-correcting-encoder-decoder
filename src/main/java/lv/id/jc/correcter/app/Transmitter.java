@@ -33,10 +33,10 @@ public record Transmitter(Coder coder, DataConfig source, DataConfig target) imp
     }
 
     byte[] readData() throws IOException {
-        return Files.readAllBytes(Paths.get(source.file()));
+        return Files.readAllBytes(source.file());
     }
 
     void writeData(byte[] data) throws IOException {
-        Files.write(Paths.get(target.file()), data);
+        Files.write(target.file(), data);
     }
 }
