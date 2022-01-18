@@ -18,7 +18,7 @@ public class BinPrinter implements Printer {
 
     private String byteToBinary(byte data) {
         return String
-                .format("%8s", Integer.toBinaryString(data & 0xFF))
+                .format("%8s", Integer.toBinaryString(Byte.toUnsignedInt(data)))
                 .replace(' ', '0');
     }
 
