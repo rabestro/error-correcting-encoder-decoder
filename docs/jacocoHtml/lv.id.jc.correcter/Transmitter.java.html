@@ -47,9 +47,9 @@ import static java.lang.System.out;
 <span class="fc" id="L27">        }</span>
 <span class="fc" id="L28">    }</span>
 
-    void printInfo(DataInfo dataInfo, byte[] data) {
-<span class="fc" id="L31">        out.println(dataInfo.file());</span>
-<span class="pc" id="L32">        dataInfo.printers().forEach(printer -&gt; out.println(printer.apply(data)));</span>
+    void printInfo(DataInfo dataConfig, byte[] data) {
+<span class="fc" id="L31">        out.println(dataConfig.file());</span>
+<span class="pc" id="L32">        dataConfig.printers().forEach(printer -&gt; out.println(printer.apply(data)));</span>
 <span class="fc" id="L33">    }</span>
 
     byte[] readData() throws IOException {

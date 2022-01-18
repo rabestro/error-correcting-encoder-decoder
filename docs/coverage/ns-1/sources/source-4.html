@@ -99,9 +99,9 @@
 <b class="fc"><i class="no-highlight">27</i>&nbsp;        }</b>
 <i class="no-highlight">28</i>&nbsp;    }
 <i class="no-highlight">29</i>&nbsp;
-<i class="no-highlight">30</i>&nbsp;    void printInfo(DataInfo dataInfo, byte[] data) {
-<b class="fc"><i class="no-highlight">31</i>&nbsp;        out.println(dataInfo.file());</b>
-<b class="fc"><i class="no-highlight">32</i>&nbsp;        dataInfo.printers().forEach(printer -&gt; out.println(printer.apply(data)));</b>
+<i class="no-highlight">30</i>&nbsp;    void printInfo(DataInfo dataConfig, byte[] data) {
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        out.println(dataConfig.file());</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;        dataConfig.printers().forEach(printer -&gt; out.println(printer.apply(data)));</b>
 <i class="no-highlight">33</i>&nbsp;    }
 <i class="no-highlight">34</i>&nbsp;
 <i class="no-highlight">35</i>&nbsp;    byte[] readData() throws IOException {

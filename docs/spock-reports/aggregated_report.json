@@ -376,5 +376,275 @@
     },
     "title": "",
     "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.ErrorEmulatorSpec": {
+    "executedFeatures": [
+      "should make an error in one bit per byte"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 64
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.printer.BinPrinterSpec": {
+    "executedFeatures": [
+      "should print binary view of data"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 7
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
+    "executedFeatures": [
+      "should decode data by Hamming algorithm"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 59
+    },
+    "title": "Hamming error-correction decoder",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.HammingEncoderSpec": {
+    "executedFeatures": [
+      "should encode data by Hamming algorithm"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 7
+    },
+    "title": "Hamming error-correction encoder",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.printer.HexPrinterSpec": {
+    "executedFeatures": [
+      "should print hex view of data"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 8
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.printer.TextPrinterSpec": {
+    "executedFeatures": [
+      "should print text view of data"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 12
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.EncoderTransmitterIntegrationSpec": {
+    "executedFeatures": [
+      "should encode the message"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 86
+    },
+    "title": "Encode mode of transmission",
+    "narrative": "Integration test for Encode mode"
+  },
+  "lv.id.jc.correcter.printer.HexPrinterSpec": {
+    "executedFeatures": [
+      "should print hex view of data"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 42
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.ErrorEmulatorSpec": {
+    "executedFeatures": [
+      "should make an error in one bit per byte"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 74
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.printer.BinPrinterSpec": {
+    "executedFeatures": [
+      "should print binary view of data"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 5
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
+    "executedFeatures": [
+      "should decode data by Hamming algorithm"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 47
+    },
+    "title": "Hamming error-correction decoder",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.HammingEncoderSpec": {
+    "executedFeatures": [
+      "should encode data by Hamming algorithm"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 22
+    },
+    "title": "Hamming error-correction encoder",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.printer.HexPrinterSpec": {
+    "executedFeatures": [
+      "should print hex view of data"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 12
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.printer.TextPrinterSpec": {
+    "executedFeatures": [
+      "should print text view of data"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 6
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.EncoderTransmitterIntegrationSpec": {
+    "executedFeatures": [
+      "should encode the message"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 72
+    },
+    "title": "Encode mode of transmission",
+    "narrative": "Integration test for Encode mode"
   }
 }
