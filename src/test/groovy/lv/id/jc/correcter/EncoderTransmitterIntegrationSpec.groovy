@@ -1,15 +1,25 @@
 package lv.id.jc.correcter
 
+import lv.id.jc.correcter.app.DataConfig
+import lv.id.jc.correcter.app.Transmitter
 import lv.id.jc.correcter.coder.HammingEncoder
 import spock.lang.*
 
 import java.nio.file.Files
+import java.nio.file.Path
 import java.nio.file.Paths
 
 @Title("Encode mode of transmission")
 @Narrative("Integration test for Encode mode")
 class EncoderTransmitterIntegrationSpec extends Specification {
     static TEMP_DIR = "src/test/resources"
+
+    @Shared
+    @TempDir
+    Path temp
+
+    @Shared
+    def sourcePath = temp.toString() + "/source.bin"
 
     @Shared
     def source = new DataConfig("${TEMP_DIR}/source.bin", [])
@@ -24,6 +34,7 @@ class EncoderTransmitterIntegrationSpec extends Specification {
 
     def 'should encode the message'() {
         given: 'a message written to the source file'
+        println(sourcePath)
         Files.writeString(sourceFile, message)
 
         when: 'we run the transmitter to encode the message'

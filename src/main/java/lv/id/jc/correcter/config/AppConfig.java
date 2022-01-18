@@ -1,8 +1,8 @@
 package lv.id.jc.correcter.config;
 
-import lv.id.jc.correcter.Application;
-import lv.id.jc.correcter.DataConfig;
-import lv.id.jc.correcter.Transmitter;
+import lv.id.jc.correcter.app.Application;
+import lv.id.jc.correcter.app.DataConfig;
+import lv.id.jc.correcter.app.Transmitter;
 import lv.id.jc.correcter.coder.ErrorEmulator;
 import lv.id.jc.correcter.coder.HammingDecoder;
 import lv.id.jc.correcter.coder.HammingEncoder;

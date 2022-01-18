@@ -1,4 +1,4 @@
-package lv.id.jc.correcter;
+package lv.id.jc.correcter.app;
 
 import lv.id.jc.correcter.printer.Printer;
 
