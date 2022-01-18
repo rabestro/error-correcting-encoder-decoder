@@ -60,8 +60,9 @@ jacocoTestReport {
 
     reports {
         xml.required = true
+        html.required = true
         csv.required = false
-        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+        html.outputLocation = layout.buildDirectory.dir('../docs/jacocoHtml')
     }
 
     afterEvaluate {

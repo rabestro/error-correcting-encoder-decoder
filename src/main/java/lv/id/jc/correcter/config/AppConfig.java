@@ -10,6 +10,7 @@ import lv.id.jc.correcter.printer.BinPrinter;
 import lv.id.jc.correcter.printer.HexPrinter;
 import lv.id.jc.correcter.printer.Printer;
 import lv.id.jc.correcter.printer.TextPrinter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,10 +19,17 @@ import java.util.Map;
 
 @Configuration
 public class AppConfig {
-    private static final String SOURCE_FILE = "send.txt";
-    private static final String ENCODED_FILE = "encoded.txt";
-    private static final String DECODED_FILE = "decoded.txt";
-    private static final String RECEIVED_FILE = "received.txt";
+    @Value("${source.file:send.txt}")
+    private String sourceFile;
+
+    @Value("${encoded.file:encoded.txt}")
+    private String encodedFile;
+
+    @Value("${decoded.file:decoded.txt}")
+    private String decodedFile;
+
+    @Value("${received.file:received.txt}")
+    private String receivedFile;
 
     @Bean("textPrinter")
     public Printer getTextPrinter() {
@@ -39,20 +47,20 @@ public class AppConfig {
     }
 
     public Runnable getEncodeAction() {
-        var source = new DataInfo(SOURCE_FILE, List.of(getTextPrinter(), getHexPrinter(), getBinPrinter()));
-        var target = new DataInfo(ENCODED_FILE, List.of(getHexPrinter(), getBinPrinter()));
+        var source = new DataInfo(sourceFile, List.of(getTextPrinter(), getHexPrinter(), getBinPrinter()));
+        var target = new DataInfo(encodedFile, List.of(getHexPrinter(), getBinPrinter()));
         return new Transmitter(new HammingEncoder(), source, target);
     }
 
     public Runnable getSendAction() {
-        var source = new DataInfo(ENCODED_FILE, List.of(getHexPrinter(), getBinPrinter()));
-        var target = new DataInfo(RECEIVED_FILE, List.of(getBinPrinter(), getHexPrinter()));
+        var source = new DataInfo(encodedFile, List.of(getHexPrinter(), getBinPrinter()));
+        var target = new DataInfo(receivedFile, List.of(getBinPrinter(), getHexPrinter()));
         return new Transmitter(new ErrorEmulator(), source, target);
     }
 
     public Runnable getDecodeAction() {
-        var source = new DataInfo(RECEIVED_FILE, List.of(getHexPrinter(), getBinPrinter()));
-        var target = new DataInfo(DECODED_FILE, List.of(getBinPrinter(), getHexPrinter(), getTextPrinter()));
+        var source = new DataInfo(receivedFile, List.of(getHexPrinter(), getBinPrinter()));
+        var target = new DataInfo(decodedFile, List.of(getBinPrinter(), getHexPrinter(), getTextPrinter()));
         return new Transmitter(new HammingDecoder(), source, target);
     }
 

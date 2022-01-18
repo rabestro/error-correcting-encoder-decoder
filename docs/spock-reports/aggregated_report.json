@@ -12,27 +12,9 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 51
+      "time": 66
     },
     "title": "",
-    "narrative": ""
-  },
-  "lv.id.jc.correcter.coder.HammingEncoderSpec": {
-    "executedFeatures": [
-      "should encode data by Hamming algorithm"
-    ],
-    "ignoredFeatures": [],
-    "stats": {
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "totalRuns": 1,
-      "totalFeatures": 1,
-      "passed": 1,
-      "successRate": 1.0,
-      "time": 34
-    },
-    "title": "Hamming error-correction encoder",
     "narrative": ""
   },
   "lv.id.jc.correcter.printer.BinPrinterSpec": {
@@ -48,9 +30,45 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 4
+      "time": 6
     },
     "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
+    "executedFeatures": [
+      "should decode data by Hamming algorithm"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 64
+    },
+    "title": "Hamming error-correction decoder",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.HammingEncoderSpec": {
+    "executedFeatures": [
+      "should encode data by Hamming algorithm"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 8
+    },
+    "title": "Hamming error-correction encoder",
     "narrative": ""
   },
   "lv.id.jc.correcter.printer.HexPrinterSpec": {
@@ -66,7 +84,7 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 10
+      "time": 13
     },
     "title": "",
     "narrative": ""
@@ -74,60 +92,6 @@
   "lv.id.jc.correcter.printer.TextPrinterSpec": {
     "executedFeatures": [
       "should print text view of data"
-    ],
-    "ignoredFeatures": [],
-    "stats": {
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "totalRuns": 1,
-      "totalFeatures": 1,
-      "passed": 1,
-      "successRate": 1.0,
-      "time": 8
-    },
-    "title": "",
-    "narrative": ""
-  },
-  "lv.id.jc.correcter.coder.ErrorEmulatorSpec": {
-    "executedFeatures": [
-      "should make an error in one bit per byte"
-    ],
-    "ignoredFeatures": [],
-    "stats": {
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "totalRuns": 1,
-      "totalFeatures": 1,
-      "passed": 1,
-      "successRate": 1.0,
-      "time": 75
-    },
-    "title": "",
-    "narrative": ""
-  },
-  "lv.id.jc.correcter.coder.HammingEncoderSpec": {
-    "executedFeatures": [
-      "should encode data by Hamming algorithm"
-    ],
-    "ignoredFeatures": [],
-    "stats": {
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "totalRuns": 1,
-      "totalFeatures": 1,
-      "passed": 1,
-      "successRate": 1.0,
-      "time": 44
-    },
-    "title": "Hamming error-correction encoder",
-    "narrative": ""
-  },
-  "lv.id.jc.correcter.printer.BinPrinterSpec": {
-    "executedFeatures": [
-      "should print binary view of data"
     ],
     "ignoredFeatures": [],
     "stats": {
@@ -143,6 +107,96 @@
     "title": "",
     "narrative": ""
   },
+  "lv.id.jc.correcter.EncoderTransmitterIntegrationSpec": {
+    "executedFeatures": [
+      "should encode the message"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 88
+    },
+    "title": "Encode mode of transmission",
+    "narrative": "Integration test for Encode mode"
+  },
+  "lv.id.jc.correcter.coder.ErrorEmulatorSpec": {
+    "executedFeatures": [
+      "should make an error in one bit per byte"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 92
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.printer.BinPrinterSpec": {
+    "executedFeatures": [
+      "should print binary view of data"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 10
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
+    "executedFeatures": [
+      "should decode data by Hamming algorithm"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 108
+    },
+    "title": "Hamming error-correction decoder",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.coder.HammingEncoderSpec": {
+    "executedFeatures": [
+      "should encode data by Hamming algorithm"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 16
+    },
+    "title": "Hamming error-correction encoder",
+    "narrative": ""
+  },
   "lv.id.jc.correcter.printer.HexPrinterSpec": {
     "executedFeatures": [
       "should print hex view of data"
@@ -156,7 +210,7 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 21
+      "time": 27
     },
     "title": "",
     "narrative": ""
@@ -174,7 +228,61 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 17
+      "time": 20
+    },
+    "title": "",
+    "narrative": ""
+  },
+  "lv.id.jc.correcter.EncoderTransmitterIntegrationSpec": {
+    "executedFeatures": [
+      "should encode the message"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 224
+    },
+    "title": "Encode mode of transmission",
+    "narrative": "Integration test for Encode mode"
+  },
+  "lv.id.jc.correcter.EncoderTransmitterIntegrationSpec": {
+    "executedFeatures": [
+      "should encode the message"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 98
+    },
+    "title": "Encode mode of transmission",
+    "narrative": "Integration test for Encode mode"
+  },
+  "lv.id.jc.correcter.coder.ErrorEmulatorSpec": {
+    "executedFeatures": [
+      "should make an error in one bit per byte"
+    ],
+    "ignoredFeatures": [],
+    "stats": {
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "totalRuns": 1,
+      "totalFeatures": 1,
+      "passed": 1,
+      "successRate": 1.0,
+      "time": 21
     },
     "title": "",
     "narrative": ""
@@ -192,32 +300,14 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 66
+      "time": 12
     },
     "title": "Hamming error-correction decoder",
     "narrative": ""
   },
-  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
+  "lv.id.jc.correcter.coder.HammingEncoderSpec": {
     "executedFeatures": [
-      "should decode data by Hamming algorithm"
-    ],
-    "ignoredFeatures": [],
-    "stats": {
-      "failures": 1,
-      "errors": 0,
-      "skipped": 0,
-      "totalRuns": 1,
-      "totalFeatures": 1,
-      "passed": 0,
-      "successRate": 0.0,
-      "time": 93
-    },
-    "title": "Hamming error-correction decoder",
-    "narrative": ""
-  },
-  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
-    "executedFeatures": [
-      "should decode data by Hamming algorithm"
+      "should encode data by Hamming algorithm"
     ],
     "ignoredFeatures": [],
     "stats": {
@@ -228,14 +318,14 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 60
+      "time": 6
     },
-    "title": "Hamming error-correction decoder",
+    "title": "Hamming error-correction encoder",
     "narrative": ""
   },
-  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
+  "lv.id.jc.correcter.printer.BinPrinterSpec": {
     "executedFeatures": [
-      "should decode data by Hamming algorithm"
+      "should print binary view of data"
     ],
     "ignoredFeatures": [],
     "stats": {
@@ -246,14 +336,14 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 61
+      "time": 5
     },
-    "title": "Hamming error-correction decoder",
+    "title": "",
     "narrative": ""
   },
-  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
+  "lv.id.jc.correcter.printer.HexPrinterSpec": {
     "executedFeatures": [
-      "should decode data by Hamming algorithm"
+      "should print hex view of data"
     ],
     "ignoredFeatures": [],
     "stats": {
@@ -264,14 +354,14 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 58
+      "time": 6
     },
-    "title": "Hamming error-correction decoder",
+    "title": "",
     "narrative": ""
   },
-  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
+  "lv.id.jc.correcter.printer.TextPrinterSpec": {
     "executedFeatures": [
-      "should decode data by Hamming algorithm"
+      "should print text view of data"
     ],
     "ignoredFeatures": [],
     "stats": {
@@ -282,27 +372,9 @@
       "totalFeatures": 1,
       "passed": 1,
       "successRate": 1.0,
-      "time": 66
+      "time": 5
     },
-    "title": "Hamming error-correction decoder",
-    "narrative": ""
-  },
-  "lv.id.jc.correcter.coder.HammingDecoderSpec": {
-    "executedFeatures": [
-      "should decode data by Hamming algorithm"
-    ],
-    "ignoredFeatures": [],
-    "stats": {
-      "failures": 0,
-      "errors": 0,
-      "skipped": 0,
-      "totalRuns": 1,
-      "totalFeatures": 1,
-      "passed": 1,
-      "successRate": 1.0,
-      "time": 99
-    },
-    "title": "Hamming error-correction decoder",
+    "title": "",
     "narrative": ""
   }
 }
