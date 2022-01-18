@@ -7,6 +7,11 @@ public class HammingEncoder implements Coder {
 
     /**
      * Applies Hamming error-correction encoding to the given data.
+     *
+     * The Hamming code [7,4] is used, i.e. will write 7 bits, 
+     * 4 of them would be significant bits, 3 of them would be parity bits 
+     * and the last one would be unused (it should always be set to zero).
+     *
      * The returned array of bytes is two times bigger than source data
      *
      * @param data - source binary data to encode
