@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import static java.lang.System.Logger.Level.WARNING;
 import static java.lang.System.out;
 
-public record Transmitter(Coder coder, DataInfo source, DataInfo target) implements Runnable {
+public record Transmitter(Coder coder, DataConfig source, DataConfig target) implements Runnable {
     private static final System.Logger LOGGER = System.getLogger("Transmitter");
 
     @Override
@@ -27,9 +27,9 @@ public record Transmitter(Coder coder, DataInfo source, DataInfo target) impleme
         }
     }
 
-    void printInfo(DataInfo dataInfo, byte[] data) {
-        out.println(dataInfo.file());
-        dataInfo.printers().forEach(printer -> out.println(printer.apply(data)));
+    void printInfo(DataConfig dataConfig, byte[] data) {
+        out.println(dataConfig.file());
+        dataConfig.printers().forEach(printer -> out.println(printer.apply(data)));
     }
 
     byte[] readData() throws IOException {
