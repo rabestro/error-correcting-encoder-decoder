@@ -251,7 +251,7 @@ div.footer {
 </div>
 <div class='summary-report'>
 <h3>Summary:</h3>
-<div class='date-test-ran'>Created on Tue Jan 18 22:50:29 EET 2022 by jegors</div>
+<div class='date-test-ran'>Created on Tue Jan 18 23:21:53 EET 2022 by jegors</div>
 <table class='summary-table'>
 <thead>
 <tr>
@@ -272,13 +272,12 @@ div.footer {
 <td>0</td>
 <td>0</td>
 <td>100.0%</td>
-<td>0.039 seconds</td>
+<td>0.150 seconds</td>
 </tr>
 </tbody>
 </table>
 </div>
-<pre class='title'>Encode mode of transmission</pre>
-<pre class='narrative'>Integration test for Encode mode of the application</pre>
+<pre class='title'>Integration test for encoding the message</pre>
 <h3>Features:</h3>
 <table class='features-table'>
 <colgroup>
@@ -342,8 +341,21 @@ def targetPath = temp.resolve("target.bin")</pre>
 <td></td>
 <td>
 <pre class='block-source'>def source = new DataConfig(sourcePath, [])
-def target = new DataConfig(targetPath, [])
-@Subject
+def target = new DataConfig(targetPath, [])</pre>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>And:</div>
+</td>
+<td>
+<div class='block-text'>coder and transmitter are under the test</div>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<pre class='block-source'>@Subject
 def coder = new HammingEncoder()
 @Subject
 def transmitter = new Transmitter(coder, source, target)</pre>
@@ -368,7 +380,7 @@ def transmitter = new Transmitter(coder, source, target)</pre>
 <div class='block-kind'>Then:</div>
 </td>
 <td>
-<div class='block-text'>transmitter creates an hex binary file</div>
+<div class='block-text'>transmitter creates a binary file</div>
 </td>
 </tr>
 <tr>
@@ -382,7 +394,7 @@ def transmitter = new Transmitter(coder, source, target)</pre>
 <div class='block-kind'>And:</div>
 </td>
 <td>
-<div class='block-text'>the hex binary file is two times bigger then the source file</div>
+<div class='block-text'>the binary file is two times bigger then the source file</div>
 </td>
 </tr>
 <tr>
