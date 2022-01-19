@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.util.random.RandomGenerator;
 
 @Configuration
 public class AppConfig {
@@ -31,6 +32,9 @@ public class AppConfig {
 
     @Value("${received.file:received.txt}")
     private String receivedFile;
+
+    @Value("${random.generator.algorithm:L128X1024MixRandom}")
+    private String algorithm;
 
     @Bean("textPrinter")
     public Printer getTextPrinter() {
@@ -56,7 +60,7 @@ public class AppConfig {
     public Runnable getSendAction() {
         var source = new DataConfig(Path.of(encodedFile), List.of(getHexPrinter(), getBinPrinter()));
         var target = new DataConfig(Path.of(receivedFile), List.of(getBinPrinter(), getHexPrinter()));
-        return new Transmitter(new ErrorEmulator(), source, target);
+        return new Transmitter(new ErrorEmulator(RandomGenerator.of(algorithm)), source, target);
     }
 
     public Runnable getDecodeAction() {
