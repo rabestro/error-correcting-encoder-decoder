@@ -10,7 +10,7 @@ import java.nio.file.Path
 
 @Title("Integration test for encoding the message")
 @See("https://hyperskill.org/projects/58/stages/316/implement")
-class EncoderTransmitterIntegrationSpec extends Specification {
+class TransmitterIntegrationSpec extends Specification {
     @TempDir
     Path temp
 
@@ -19,17 +19,17 @@ class EncoderTransmitterIntegrationSpec extends Specification {
 
     def 'should encode message "#message"'() {
         given: 'input and output file names'
-        def sourcePath = temp.resolve("source.bin")
+        def sourcePath = temp.resolve("source.txt")
         def targetPath = temp.resolve("target.bin")
 
-        and: 'a message written to the source file'
+        and: 'a message written to the source text file'
         Files.writeString(sourcePath, message)
 
         and: 'configurations for input and output data files'
         def source = new DataConfig(sourcePath, [])
         def target = new DataConfig(targetPath, [])
 
-        and: 'coder and transmitter are under the test'
+        and: 'a coder and a transmitter are under the test'
         @Subject
         def coder = new HammingEncoder()
 
@@ -39,22 +39,22 @@ class EncoderTransmitterIntegrationSpec extends Specification {
         when: 'we run the transmitter to encode the message'
         transmitter.run()
 
-        then: 'transmitter creates a binary file'
+        then: 'the transmitter creates a target binary file'
         Files.exists(targetPath)
 
-        and: 'the binary file is two times bigger then the source file'
+        and: 'the target binary file is two times bigger then the source file'
         Files.size(targetPath) == 2 * Files.size(sourcePath)
 
-        and: 'the target file has properly encoded message'
+        and: 'the target binary file has properly encoded message'
         Files.readAllBytes(targetPath) == encoded
 
-        where: 'source message and encoded message in hex view'
+        where: 'the message and the encoded message as string with hex codes'
         message | hex
         ''      | ''
         'T'     | '4A98'
         'Test'  | '4A98CC4A1E861E98'
 
-        and: 'expected encoded content of the target file'
+        and: 'expected content of the target binary file defined as'
         encoded = hexParser.parseHex(hex)
     }
 
