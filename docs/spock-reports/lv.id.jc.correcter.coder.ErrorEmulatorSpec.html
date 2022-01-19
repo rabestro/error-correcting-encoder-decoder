@@ -251,7 +251,7 @@ div.footer {
 </div>
 <div class='summary-report'>
 <h3>Summary:</h3>
-<div class='date-test-ran'>Created on Tue Jan 18 22:50:29 EET 2022 by jegors</div>
+<div class='date-test-ran'>Created on Wed Jan 19 13:55:11 EET 2022 by jegors</div>
 <table class='summary-table'>
 <thead>
 <tr>
@@ -272,10 +272,30 @@ div.footer {
 <td>0</td>
 <td>0</td>
 <td>100.0%</td>
-<td>0.054 seconds</td>
+<td>0.106 seconds</td>
 </tr>
 </tbody>
 </table>
+</div>
+<pre class='title'>Bit-level error emulator</pre>
+<pre class='narrative'>Simulate the sending through a poor internet connection 
+making one-bit errors in every byte of the text</pre>
+<div class='issues'>
+<div>Issues:</div>
+<ul>
+<li>
+<a href='https://github.com/rabestro/error-correcting-encoder-decoder/issues/19'>Issue #19</a>
+</li>
+<li>
+<a href='https://github.com/rabestro/error-correcting-encoder-decoder/issues/20'>Issue #20</a>
+</li>
+</ul>
+<div>See:</div>
+<ul>
+<li>
+<a href='https://hyperskill.org/projects/58/stages/314/implement'>https://hyperskill.org/projects/58/stages/314/implement</a>
+</li>
+</ul>
 </div>
 <h3>Features:</h3>
 <table class='features-table'>
@@ -304,6 +324,12 @@ div.footer {
 <div class='block-kind'>Given:</div>
 </td>
 <td>
+<div class='block-text'>text as byte array</div>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
 <pre class='block-source'>def data = text.bytes</pre>
 </td>
 </tr>
@@ -312,6 +338,12 @@ div.footer {
 <div class='block-kind'>When:</div>
 </td>
 <td>
+<div class='block-text'>we use error emulator coder</div>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
 <pre class='block-source'>def out = coder.apply(data)</pre>
 </td>
 </tr>
@@ -319,6 +351,12 @@ div.footer {
 <td>
 <div class='block-kind'>Then:</div>
 </td>
+<td>
+<div class='block-text'>we have one-bit errors in every byte of the data</div>
+</td>
+</tr>
+<tr>
+<td></td>
 <td>
 <pre class='block-source'>(0..&lt;data.length).every { (out[it] ^ data[it]) in ONE_BIT_ERRORS }</pre>
 </td>

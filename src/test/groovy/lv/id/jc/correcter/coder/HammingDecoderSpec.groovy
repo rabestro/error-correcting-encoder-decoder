@@ -1,27 +1,25 @@
 package lv.id.jc.correcter.coder
 
-import spock.lang.Rollup
-import spock.lang.Specification
-import spock.lang.Subject
-import spock.lang.Title
+import spock.lang.*
 
 @Title("Hamming error-correction decoder")
+@See("https://hyperskill.org/projects/58/stages/316/implement")
 class HammingDecoderSpec extends Specification {
     @Subject
     def coder = new HammingDecoder()
 
     @Rollup
     def 'should decode data by Hamming algorithm'() {
-        given:
+        given: 'received binary data with errors'
         def data = received as byte[]
 
-        when:
+        when: 'we decode the data using Hamming error-correction algorithm'
         def decoded = coder.apply(data)
 
-        then:
+        then: 'the algorithm correct the data and we get original text'
         decoded == text as byte[]
 
-        where:
+        where: 'we have one-bit errors in every byte of the data'
         received                                                                                         | text
         [0b01001010, 0b10011000]                                                                         | 'T'
         [0b00001010, 0b10010000]                                                                         | 'T'
