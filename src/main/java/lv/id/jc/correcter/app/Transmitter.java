@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import static java.lang.System.Logger.Level.WARNING;
 import static java.lang.System.out;
 
+@SuppressWarnings("squid:S106")
 public record Transmitter(Coder coder, DataConfig source, DataConfig target) implements Runnable {
     private static final System.Logger LOGGER = System.getLogger("Transmitter");
 
