@@ -4,7 +4,7 @@ title: "Error Correcting Encoder-Decoder"
 author: Jegors Čemisovs
 email: jegors.cemisovs@outlook.lv
 description: >
-  Implementation of the project from JetBrains Academy 
+  An implementation of the Hamming code algorithm 
 
 # social links
 twitter_username: rabestro # DO NOT include the @ character, or else the build will fail!

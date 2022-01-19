@@ -251,7 +251,7 @@ div.footer {
 </div>
 <div class='summary-report'>
 <h3>Summary:</h3>
-<div class='date-test-ran'>Created on Tue Jan 18 22:50:29 EET 2022 by jegors</div>
+<div class='date-test-ran'>Created on Wed Jan 19 13:55:11 EET 2022 by jegors</div>
 <table class='summary-table'>
 <thead>
 <tr>
@@ -272,12 +272,20 @@ div.footer {
 <td>0</td>
 <td>0</td>
 <td>100.0%</td>
-<td>0.050 seconds</td>
+<td>0.065 seconds</td>
 </tr>
 </tbody>
 </table>
 </div>
 <pre class='title'>Hamming error-correction decoder</pre>
+<div class='issues'>
+<div>See:</div>
+<ul>
+<li>
+<a href='https://hyperskill.org/projects/58/stages/316/implement'>https://hyperskill.org/projects/58/stages/316/implement</a>
+</li>
+</ul>
+</div>
 <h3>Features:</h3>
 <table class='features-table'>
 <colgroup>
@@ -305,6 +313,12 @@ div.footer {
 <div class='block-kind'>Given:</div>
 </td>
 <td>
+<div class='block-text'>received binary data with errors</div>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
 <pre class='block-source'>def data = received as byte[]</pre>
 </td>
 </tr>
@@ -312,6 +326,12 @@ div.footer {
 <td>
 <div class='block-kind'>When:</div>
 </td>
+<td>
+<div class='block-text'>we decode the data using Hamming error-correction algorithm</div>
+</td>
+</tr>
+<tr>
+<td></td>
 <td>
 <pre class='block-source'>def decoded = coder.apply(data)</pre>
 </td>
@@ -321,7 +341,21 @@ div.footer {
 <div class='block-kind'>Then:</div>
 </td>
 <td>
+<div class='block-text'>the algorithm correct the data and we get original text</div>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
 <pre class='block-source'>decoded == text as byte[]</pre>
+</td>
+</tr>
+<tr>
+<td>
+<div class='block-kind'>Where:</div>
+</td>
+<td>
+<div class='block-text'>we have one-bit errors in every byte of the data</div>
 </td>
 </tr>
 <tr>
