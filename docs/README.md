@@ -12,7 +12,7 @@ files.
 
 ## How to run
 
-[![asciicast](https://asciinema.org/a/GIx7eyuZrhM8IETIYTWHMb1ub.svg)](https://asciinema.org/a/GIx7eyuZrhM8IETIYTWHMb1ub)
+[![asciicast](https://asciinema.org/a/463093.svg)](https://asciinema.org/a/463093)
 
 ## Generated reports
 
