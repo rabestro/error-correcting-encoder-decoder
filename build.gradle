@@ -48,7 +48,13 @@ test {
 run {
     standardInput = System.in
 }
-
+application {
+    mainModule = 'correcter.main'
+    mainClass = 'lv.id.jc.correcter.Main'
+    applicationDefaultJvmArgs = [
+            '-Djava.util.logging.config.file=logging.properties'
+    ]
+}
 // ./gradlew run -q --console=plain
 
 jacoco {
