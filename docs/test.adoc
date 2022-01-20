@@ -1,5 +1,7 @@
 = Examples of Asciidoc
 
+== Example 1
+
 .Some Ruby code
 [source,ruby]
 ----
@@ -9,3 +11,18 @@ get '/hi' do
   "Hello World!"
 end
 ----
+
+== Example 2
+
+.Second Ruby code
+[source,ruby]
+----
+require 'sinatra' // <1>
+
+get '/hi' do // <2>
+  "Hello World!" // <3>
+end
+----
+<1> Library import
+<2> URL mapping
+<3> HTTP response body
