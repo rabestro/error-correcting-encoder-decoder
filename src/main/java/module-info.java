@@ -7,5 +7,6 @@ module correcter.main {
 
     requires spring.context;
     requires spring.core;
+    requires spring.beans;
 }
 

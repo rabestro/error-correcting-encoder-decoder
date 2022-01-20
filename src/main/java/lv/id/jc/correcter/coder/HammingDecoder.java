@@ -11,7 +11,7 @@ public class HammingDecoder implements Coder {
         int index = 0;
 
         for (int i = 0; i < out.length; ++i) {
-            out[i] = (byte) ((decode(data[index++]) << 4) + decode(data[index++]));
+            out[i] = (byte) ((decode(data[index++]) << 4) + (decode(data[index++]) & 0xFF));
         }
         return out;
     }
@@ -19,7 +19,7 @@ public class HammingDecoder implements Coder {
     private byte decode(byte data) {
         var bits = new int[8];
         for (int i = 0; i < 8; ++i) {
-            bits[7 - i] = (data & (1 << i)) >> i;
+            bits[7 - i] = (data & 0xFF & (1 << i)) >> i;
         }
         int error = 0;
         error += bits[0] ^ bits[2] ^ bits[4] ^ bits[6];
