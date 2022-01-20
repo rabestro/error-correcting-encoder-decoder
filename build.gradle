@@ -48,8 +48,19 @@ test {
 run {
     standardInput = System.in
 }
-
+application {
+    mainModule = 'correcter.main'
+    mainClass = 'lv.id.jc.correcter.Main'
+    applicationDefaultJvmArgs = [
+            '-Djava.util.logging.config.file=logging.properties'
+    ]
+}
 // ./gradlew run -q --console=plain
+
+task cast(type: Exec) {
+    workingDir '.'
+    commandLine 'asciinema', 'rec', 'correcter.cast', '--title="Error Correcting Encoder-Decoder"', '--raw', '--idle-time-limit=1'
+}
 
 jacoco {
     toolVersion = "0.8.7"
