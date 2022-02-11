@@ -4,6 +4,7 @@ import lv.id.jc.correcter.coder.Coder;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Locale;
 
 import static java.lang.System.Logger.Level.WARNING;
 
@@ -28,7 +29,8 @@ public record Transmitter(Coder coder, DataConfig source, DataConfig target) imp
     @SuppressWarnings("squid:S106")
     void printInfo(DataConfig dataConfig, byte[] data) {
         System.out.println(dataConfig.file());
-        dataConfig.printers().forEach(printer -> System.out.println(printer.apply(data)));
+        dataConfig.printers()
+                .forEach(printer -> System.out.println(printer.print(data, Locale.ENGLISH)));
     }
 
     byte[] readData() throws IOException {

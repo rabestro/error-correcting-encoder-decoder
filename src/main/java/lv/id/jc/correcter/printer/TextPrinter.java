@@ -1,11 +1,16 @@
 package lv.id.jc.correcter.printer;
 
+import org.springframework.format.Printer;
+
+import java.util.Locale;
+
 /**
  * Prints text representation of data
  */
-public class TextPrinter implements Printer {
+public class TextPrinter implements Printer<byte[]> {
+
     @Override
-    public String apply(byte[] data) {
+    public String print(byte[] data, Locale locale) {
         return "text view: " + new String(data);
     }
 }

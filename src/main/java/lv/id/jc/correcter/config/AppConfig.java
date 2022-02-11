@@ -8,11 +8,11 @@ import lv.id.jc.correcter.coder.HammingDecoder;
 import lv.id.jc.correcter.coder.HammingEncoder;
 import lv.id.jc.correcter.printer.BinPrinter;
 import lv.id.jc.correcter.printer.HexPrinter;
-import lv.id.jc.correcter.printer.Printer;
 import lv.id.jc.correcter.printer.TextPrinter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.Printer;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -37,17 +37,17 @@ public class AppConfig {
     private String algorithm;
 
     @Bean("textPrinter")
-    public Printer getTextPrinter() {
+    public Printer<byte[]> getTextPrinter() {
         return new TextPrinter();
     }
 
     @Bean("hexPrinter")
-    public Printer getHexPrinter() {
+    public Printer<byte[]> getHexPrinter() {
         return new HexPrinter();
     }
 
     @Bean("binPrinter")
-    public Printer getBinPrinter() {
+    public Printer<byte[]> getBinPrinter() {
         return new BinPrinter();
     }
 
