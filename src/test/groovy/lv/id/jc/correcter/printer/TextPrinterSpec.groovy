@@ -16,7 +16,7 @@ class TextPrinterSpec extends Specification {
         def data = text.bytes
 
         expect:
-        printer.apply(data) == expected
+        printer.print(data, Locale.ENGLISH) == expected
 
         where:
         text << ['Test', 'Eat more of these french buns!', '']

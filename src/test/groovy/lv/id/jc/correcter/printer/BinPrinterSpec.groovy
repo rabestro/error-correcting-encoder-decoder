@@ -8,7 +8,7 @@ class BinPrinterSpec extends Specification {
         def printer = new BinPrinter()
 
         expect:
-        printer.apply(data) == binView
+        printer.print(data, Locale.ENGLISH) == binView
 
         where:
         data = 'Test' as byte[]

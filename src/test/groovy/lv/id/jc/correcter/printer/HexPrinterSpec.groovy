@@ -10,7 +10,7 @@ class HexPrinterSpec extends Specification {
         def printer = new HexPrinter()
 
         expect:
-        printer.apply(data) == hexView
+        printer.print(data, Locale.ENGLISH) == hexView
 
         where:
         text                             | hex
